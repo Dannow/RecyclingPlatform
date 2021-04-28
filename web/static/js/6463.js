@@ -1,0 +1,1 @@
+document.write('<input type="button" style="width: 184px;height: 38px;line-height:30px;"  value="已抢完" class="pay_btn2" />')

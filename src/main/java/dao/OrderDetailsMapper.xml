@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.OrderDetailsMapper">
+
+    <resultMap id="orderDetailsMap" type="OrderDetails">
+        <id column="orderDetailsId" property="orderDetailsId"/>
+        <result column="realWeight" property="realWeight"/>
+        <association property="goods" javaType="Goods">
+            <id column="goodsId" property="goodsId"/>
+            <result column="goodsPrice" property="goodsPrice"/>
+            <result column="goodsName" property="goodsName"/>
+        </association>
+    </resultMap>
+    <select id="getOrderDetailByOrderId" resultMap="orderDetailsMap">
+        select * from order_details as o
+        LEFT JOIN goods as g
+        on g.goodsId=o.goodsId
+        where orderId=#{orderId}
+    </select>
+    
+    <insert id="addOrderDetails" parameterType="OrderDetails">
+        insert into order_details(orderId,goodsId,predictWeight,realWeight) values (#{order.orderId},#{goods.goodsId},#{predictWeight},#{realWeight})
+    </insert>
+
+    <update id="updateRealWeight" parameterType="OrderDetails">
+        update order_details set realWeight = #{realWeight} where orderDetailsId = #{orderDetailsId}
+    </update>
+
+</mapper>

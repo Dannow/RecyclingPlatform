@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>404错误 -回购网</title>
+<link href="/css/global.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+  .cnzz_total a{display: none;}
+</style>
+</head>
+<body>
+
+<!--404-->
+<div class="error">
+  <div class="error_main">
+     <div class="error_img"><img src="/images/404.png" width="271" height="297" /></div>
+     <div class="error_txt">
+      <p><img src="/images/404_icon.png" /></p>
+      <p>请检查您输入的网站是否正确，或者点击链接继续浏览！<br />
+您也可以访问“回购网”</p>
+<p><a href="/">前往回购网</a></p>
+     </div>
+     <div class="clear"></div>
+  </div>
+</div>
+<!--404-->
+<div class="cnzz_total">
+<script rel="nofollow" src="http://s23.cnzz.com/stat.php?id=4678782&web_id=4678782" language="JavaScript"></script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?fdfce54119cee7245b0d2a4c78d69456";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</div>
+</body>
+</html>

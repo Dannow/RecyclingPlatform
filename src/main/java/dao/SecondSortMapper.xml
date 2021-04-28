@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.SecondSortMapper">
+
+    <select id="getAllSecondSort" resultType="SecondSort">
+        select * from second_sort
+    </select>
+    
+    <select id="getAllSecondSortByFirstSortId" resultType="SecondSort">
+        select * from second_sort where firstSortId=#{firstSortId}
+    </select>
+    
+    <select id="getSecondSortById" resultType="SecondSort">
+        select * from second_sort where secondSortId = #{secondSortId}
+    </select>
+</mapper>

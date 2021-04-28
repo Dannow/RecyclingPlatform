@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+
+body, div, p {margin: 0;padding: 0;}
+ul {list-style: none;}
+html { overflow:hidden}
+em{ font-style:normal}
+body {width: 100%;*cursor: default;font: 16px/1.5 "Microsoft YaHei", Helvetica, STHeiti STXihei, Microsoft JhengHei, Arial; overflow:hidden}
+.clear{ width:100%; height:0;}
+.page {display: none;width: 100%;height: 100%;overflow: hidden;position: absolute;top: 0;left: 0;}
+.contain {width: 100%;height: 100%;display: none;position: relative;z-index: 0;}
+.current .contain, .slide .contain {display: block;}
+.current {display: block;z-index: 1;}
+.slide {display: block;z-index: 2;}
+.swipe {display: block;z-index: 3;transition-duration: 0ms !important;-webkit-transition-duration: 0ms !important;}
+.page1 {background:#f6f6f6;}
+.page2 {background:#ececec;}
+.page3 {background:#f6f6f6;}
+.page4 {background:#ececec;}
+.page5 {background:#f6f6f6;}
+.page6 {background:#ececec;}
+.page7 {background:#f6f6f6;}
+
+.nav{background:url(../image/line1.gif) repeat-y 105px top; height:100%; width:116px; position:absolute; top:0%; right:3%;z-index: 3;}
+#navBar {width:116px !important;margin:0; height:266px; position:absolute; top:50%; margin-top:-133px; right:3%}
+#navBar .active {background:url(../image/active.png) no-repeat; font-size:18px; color:#fff; line-height:27px;}
+#navBar li {cursor: pointer; margin-bottom: 11px;transition: all .7s ease;background:url(../image/nav_bg.png) no-repeat;line-height:27px;text-align: center;width:116px;height:27px;font-size:12px;color:#808080;}
+.txt {}
+.page1 .txt{ padding:3% 0 0 0; text-align:center; height:477px;}
+.page1 .more{ text-align:center; padding:5% 0 0 0}
+.wrap{ width:1024px; margin:0 auto; position:absolute; left:50%; top:50%; margin:-300px 0 0 -512px; height:600px; overflow:hidden}
+.tab{ margin:0 auto; text-align:center; margin-left:-28px;}
+.tab li{ display:inline-block; width:70px; height:70px; border:3px solid #f6f6f6; border-radius:300px; cursor:pointer; margin:0 19px; position:relative}
+.page2 .tab li, .page3 .tab li, .page5 .tab li{ border:3px solid #ececec}
+.tab li img{ width:70px; height:70px;border-radius:300px;}
+.tab li.curr{ border:3px solid #fd8712}
+.tab li span{border-radius:300px; background:url(../image/bg.png) repeat; display:block; position:absolute; width:70px; height:70px; left:0; top:0; line-height:70px; text-align:center; color:#fff; font-size:14px;}
+.tab li.curr span{ display:none}
+.tab li em{ display:none}
+.tab li:hover em{ display:block}
+.tabcon{ text-align:center}
+.zj_title{ font-size:40px; line-height:40px;color:#1a1f29; font-family:"黑体"; margin-bottom:4px; padding:2% 0 1% 0 }
+.zj_title *{vertical-align:bottom}
+.zj_title span{ font-size:62px;} 
+.zj_p{ font-size:16px; color:#6c7b99; height:56px; line-height:26px;}
+.zj_img{ width:360px; height:360px; margin:0 auto; margin-bottom:10px;}
+.zj_img img{ border-radius:200px;}
+.zj_footer{ width:100%; height:30px; color:#999; font-size:12px; position:absolute; left:0; bottom:0; text-align:center; z-index:1}
+.zj_footer a{ color:#666}

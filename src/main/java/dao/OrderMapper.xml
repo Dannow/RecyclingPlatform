@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.OrderMapper">
+
+    <select id="getOrderById" resultType="Order">
+        select * from `order` where orderId=#{orderId}
+    </select>
+
+    <select id="getAllOrder" resultType="Order">
+        select * from `order`
+    </select>
+
+    <insert id="addOrder" parameterType="Order" useGeneratedKeys="true" keyColumn="orderId" keyProperty="orderId">
+        insert into `order`(orderPrice,consumerName,consumerPhone,consumerAddress,orderTime,pickingTime,payName,payAccount,deliveryState,recycleState,payState,userId) values (#{orderPrice},#{consumerName},#{consumerPhone},#{consumerAddress},#{orderTime},#{pickingTime},#{payName},#{payAccount},#{deliveryState},#{recycleState},#{payState},#{user.userId})
+    </insert>
+
+    <resultMap id="orderDetailsMap" type="OrderDetails">
+        <id column="orderDetailsId" property="orderDetailsId"/>
+        <result column="realWeight" property="realWeight"/>
+        <result column="predictWeight" property="predictWeight"/>
+        <association property="goods" javaType="Goods">
+            <id column="goodsId" property="goodsId"/>
+            <result column="goodsName" property="goodsName"/>
+            <result column="goodsPrice" property="goodsPrice"/>
+            <result column="goodsPicture" property="goodsPicture"/>
+        </association>
+        <association property="order" javaType="Order">
+            <id column="orderId" property="orderId"/>
+            <result column="orderTime" property="orderTime"/>
+        </association>
+    </resultMap>
+    <select id="getOrderDetailsTen" resultMap ="orderDetailsMap">
+      select * from `order_details` as r
+      left join `order` as o
+      on o.orderId=r.orderId
+      left join goods as g
+      on g.goodsId=r.goodsId
+      where o.recycleState=1
+      order by orderTime desc limit 10
+    </select>
+
+    <select id="getOrderByUserId" resultMap ="orderDetailsMap">
+      select * from `order_details` as r
+      left join `order` as o
+      on o.orderId=r.orderId
+      left join goods as g
+      on g.goodsId=r.goodsId
+      where o.recycleState=0 and o.payState=0 and o.userId=#{userId}
+    </select>
+
+    <select id="getFinishOrderByUserId" resultMap="orderDetailsMap">
+      select * from `order_details` as r
+      left join `order` as o
+      on o.orderId=r.orderId
+      left join goods as g
+      on g.goodsId=r.goodsId
+      where o.payState=1 and o.userId=#{userId}
+    </select>
+
+    <delete id="deleteOrderByOrderId">
+        delete FROM `order` WHERE orderId=#{orderId}
+    </delete>
+
+    <resultMap id="orderMap" type="Order">
+        <id column="orderId" property="orderId"/>
+        <result column="orderTime" property="orderTime"/>
+        <result column="orderPrice" property="orderPrice"/>
+        <result column="consumerName" property="consumerName"/>
+        <result column="consumerPhone" property="consumerPhone"/>
+        <result column="consumerAddress" property="consumerAddress"/>
+        <result column="pickingTime" property="pickingTime"/>
+        <result column="payName" property="payName"/>
+        <result column="payAccount" property="payAccount"/>
+        <result column="recycleState" property="recycleState"/>
+        <result column="payState" property="payState"/>
+
+        <collection property="orderDetailsList" javaType="list" ofType="OrderDetails">
+            <id column="orderDetailsId" property="orderDetailsId"/>
+            <result column="realWeight" property="realWeight"/>
+            <result column="predictWeight" property="predictWeight"/>
+            <association property="goods" javaType="Goods">
+                <id column="goodsId" property="goodsId"/>
+                <result column="goodsName" property="goodsName"/>
+                <result column="goodsPrice" property="goodsPrice"/>
+                <result column="goodsPicture" property="goodsPicture"/>
+            </association>
+        </collection>
+    </resultMap>
+    <select id="getAllOrderAndDetail" resultMap="orderMap">
+        select * from `order` as o
+        left join `order_details` as r
+        on o.orderId=r.orderId
+        left join goods as g
+        on g.goodsId=r.goodsId
+        where o.recycleState=0
+    </select>
+
+    <update id="updateRecycleState">
+        update `order` set recycleState = 1 where orderId = #{orderId}
+    </update>
+
+    <update id="updatePayState">
+        update `order` set payState = 1 where orderId = #{orderId}
+    </update>
+
+    <select id="getAllFinisOrderAndDetail" resultMap="orderMap">
+         select * from `order` as o
+        left join `order_details` as r
+        on o.orderId=r.orderId
+        left join goods as g
+        on g.goodsId=r.goodsId
+        where o.recycleState=1
+    </select>
+
+    <select id="getAllNoPayOrderAndDetail" resultMap="orderMap">
+        select * from `order` as o
+        left join `order_details` as r
+        on o.orderId=r.orderId
+        left join goods as g
+        on g.goodsId=r.goodsId
+        where o.recycleState=1 and o.payState=0
+    </select>
+
+    <select id="getAllPayOrderAndDetail" resultMap="orderMap">
+        select * from `order` as o
+        left join `order_details` as r
+        on o.orderId=r.orderId
+        left join goods as g
+        on g.goodsId=r.goodsId
+        where o.recycleState=1 and o.payState=1
+    </select>
+
+    <update id="updateOrderPrice">
+        update `order` set orderPrice = #{orderPrice} where orderId = #{orderId}
+    </update>
+
+    <resultMap id="orderUserMap" type="Order">
+        <id column="orderId" property="orderId"/>
+        <result column="orderTime" property="orderTime"/>
+        <result column="orderPrice" property="orderPrice"/>
+        <result column="consumerName" property="consumerName"/>
+        <result column="consumerPhone" property="consumerPhone"/>
+        <result column="consumerAddress" property="consumerAddress"/>
+        <result column="pickingTime" property="pickingTime"/>
+        <result column="payName" property="payName"/>
+        <result column="payAccount" property="payAccount"/>
+        <result column="recycleState" property="recycleState"/>
+        <result column="payState" property="payState"/>
+
+        <association property="user" javaType="User">
+            <id column="userId" property="userId"/>
+            <result column="money" property="money"/>
+        </association>
+    </resultMap>
+    <select id="getOrderById2" resultMap="orderUserMap">
+        select * from `order` as o
+        LEFT JOIN user as u
+        on o.userId = u.userId
+        WHERE o.orderId=#{orderId}
+    </select>
+</mapper>

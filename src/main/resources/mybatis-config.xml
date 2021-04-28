@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+
+    <!--1、给domain实体类取别名-->
+    <typeAliases>
+        <package name="domain"/>
+    </typeAliases>
+
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <property name="reasonable" value="true"/>
+        </plugin>
+    </plugins>
+    <!--2、配置mapper-->
+    <mappers>
+        <mapper resource="dao/UserMapper.xml"/>
+        <mapper resource="dao/SecondSortMapper.xml"/>
+        <mapper resource="dao/OrderMapper.xml"/>
+        <mapper resource="dao/OrderDetailsMapper.xml"/>
+        <mapper resource="dao/GoodsMapper.xml"/>
+        <mapper resource="dao/FirstSortMapper.xml"/>
+        <mapper resource="dao/CartMapper.xml"/>
+        <mapper resource="dao/CartDetailsMapper.xml"/>
+        <mapper resource="dao/NewsMapper.xml"/>
+        <mapper resource="dao/CooperationMapper.xml"/>
+    </mappers>
+
+
+
+</configuration>

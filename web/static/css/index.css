@@ -1,0 +1,79 @@
+*{ padding:0; margin:0}
+body, div, p {margin: 0;padding: 0;}
+ul {list-style: none;}
+html { overflow:hidden}
+em{ font-style:normal}
+a {cursor:pointer; text-decoration:none; color:#666}
+a:hover{ color:#f60 !important}
+
+body {width: 100%;*cursor: default;font:"Microsoft YaHei", Helvetica, STHeiti STXihei, Microsoft JhengHei, Arial; overflow:hidden}
+.clear{ width:100%; height:0;}
+.page {display: none;width: 100%;height: 100%;overflow: hidden;position: absolute;top: 0;left: 0;}
+.contain {width: 100%;height: 100%;display: none;position: relative;z-index: 0;}
+.current .contain, .slide .contain {display: block;}
+.current {display: block;z-index: 1;}
+.slide {display: block;z-index: 2;}
+.swipe {display: block;z-index: 3;transition-duration: 0ms !important;-webkit-transition-duration: 0ms !important;}
+.page1 {background:#f6f6f6;}
+.page2 {background:#ececec;}
+.page3 {background:#f6f6f6;}
+.wrap{ width:100%; height:100%; overflow:hidden}
+
+
+
+
+body{ font-family:"微软雅黑"; background:#fff;}
+html{ height:100%;}
+input{ font-family:"微软雅黑";}
+#header{ height:132px; background:#f00; font-size:40px; line-height:180px; color:#fff; text-align:center; width:100%; z-index:100; position:fixed}
+
+.page1{ background:url(../image/bg.jpg) no-repeat center top; background-size:100% 100% }
+.page2{ background:#fff }
+.page3{ background:#ff0 url(../image/bg3.jpg) no-repeat center top;background-size:100% 100% }
+.page .inner{ width:1024px; height:100%; display:block; margin:0 auto; position:relative}
+
+.page1 .inner div{ text-align:center;}
+.page1 .inner .inner_img1{ margin-bottom:40px;}
+.section_box1{ padding:4% 0 0 0;}
+.section_box2{ padding:22% 0 0 0;}
+.inner_list{ background:url(../image/bg2.png) no-repeat; width:829px; height:512px; margin:0 auto; position:relative}
+.inner_list dd{ position:absolute; width:138px; height:180px;}
+.inner_list dd a{ width:138px; height:180px; text-decoration:none; text-align:center; font-family:"微软雅黑"; display:block;}
+.inner_list dd a span{ font-size:18px; color:#999; height:42px; display:block}
+.inner_list dd a samp{ display:block; background:url(../image/at_icon.png) no-repeat; width:138px; height:138px;}
+.inner_list dd.inner_item1{left: -80px;top: -84px}
+.inner_list dd.inner_item2{ left:130px; top:-182px}
+.inner_list dd.inner_item3{ left:370px; top:-176px}
+.inner_list dd.inner_item4{ left:580px; top:-180px}
+.inner_list dd.inner_item5{ left:794px; top:-112px}
+
+.inner_list dd.inner_item1 a samp{ background-position:0 0}
+.inner_list dd.inner_item2 a samp{ background-position:-140px 0}
+.inner_list dd.inner_item3 a samp{ background-position:-280px 0}
+.inner_list dd.inner_item4 a samp{ background-position:-420px 0}
+.inner_list dd.inner_item5 a samp{ background-position:-560px 0}
+
+.inner_list dd.inner_item1 a:hover samp{ background-position:0 -146px}
+.inner_list dd.inner_item2 a:hover samp{ background-position:-140px -146px}
+.inner_list dd.inner_item3 a:hover samp{ background-position:-280px -146px}
+.inner_list dd.inner_item4 a:hover samp{ background-position:-420px -146px}
+.inner_list dd.inner_item5 a:hover samp{ background-position:-560px -146px}
+
+
+.inner_input{ width:600px; margin:0 auto; padding-top:8%;}
+.inner_input dd{ height:60px; line-height:60px; margin-bottom:31px; position:relative}
+.inner_input dd samp{ position:absolute; left:0; top:0; color:#fff;  font-size:18px;padding:0 0 0 24px;}
+.inner_input dd.section_text{ height:auto !important; margin-bottom:20px;}
+.inner_input dd.section_text samp{ line-height:36px;}
+.inner_input dd.section_text textarea{ width:548px; height:100px; line-height:26px; border:2px solid #fff; padding:0 24px; border-radius:6px; background:rgba(255,255,255,0.1);}
+.inner_input dd.section_text textarea:focus{ border:2px solid #de9a18; background:RGBA(108,69,7,0.6); color:#fff;}
+.inner_input dd.inner_input_mar{}
+.inner_input dd .input_txt{ width:596px; height:56px; line-height:56px; text-indent:24px; border:2px solid #fff; border-radius:6px; background:rgba(255,255,255,0.1); font-size:18px; color:#fff;}
+.inner_input dd .input_txt:focus{ border:2px solid #de9a18; background:RGBA(108,69,7,0.6); color:#fff}
+.inner_input dt{ height:115px; text-align:center; margin-bottom:65px;}
+.inner_input dt .input_btn{ background:#f8b62d; color:#fff; border-radius:100px; width:115px; height:115px; text-align:center; line-height:115px; border:none; font-size:40px; cursor:pointer}
+.inner_txt{ text-align:center; font-size:33px; color:#666}
+
+.arrow_down{ text-align:center; width:100%; height:34px; position:absolute; left:0; bottom:3%; cursor:pointer}
+
+.section_box1 .arrow_down{ text-align:center; width:100%; height:34px; position:absolute; left:0; bottom:25%; cursor:pointer}

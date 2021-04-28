@@ -1,0 +1,27 @@
+#kefu_but{ width:49px; height:202px; position:fixed;right:0px; bottom:50px;cursor:pointer;
+
+_position:absolute;_bottom:auto;_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0))); z-index:6000}
+
+#kefu_but li{ width:49px; height:49px; margin-bottom:2px;}
+
+#kefu_but a{ background:url(../image/icon26.png) no-repeat; width:49px; height:49px; cursor:pointer;display:block;}
+
+#kefu_but a.kefu_in{ background-position:0 0;}
+
+#kefu_but a.kefu_in:hover{background-position:-52px 0;}
+
+#kefu_but a.kuaidi2{background-position:0 -51px;}
+
+#kefu_but a.kuaidi2:hover{background-position:-52px -51px;}
+
+#kefu_but a.kefu_jyts{ background-position:0 -102px;}
+
+#kefu_but a.kefu_jyts:hover{ background-position:-52px -102px;}
+
+#kefu_but a.hide_in{ background-position:0 -153px;}
+
+#kefu_but a.hide_in:hover{ background-position:-52px -153px;}
+
+#kefu_but li.wx{ width:49px; height:49px; position:relative}
+
+#code_img{ width:145px; height:139px; background: url(../image/icon27.png)no-repeat; cursor:pointer; display:none; position:absolute; right:48px; top:-34px; z-index:100;}

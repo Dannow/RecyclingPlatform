@@ -1,0 +1,1 @@
+document.write('<li><a href="/members/login.jsp" rel="nofollow">登录</a></li><li><a href="/members/register.jsp"  rel="nofollow">注册</a></li>')

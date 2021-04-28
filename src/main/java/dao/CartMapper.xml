@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.CartMapper">
+
+    <select id="getCartByUserId" resultType="Cart">
+        select * from cart where userId=#{userId}
+    </select>
+
+    <insert id="addCart" parameterType="Cart" useGeneratedKeys="true" keyColumn="cartId" keyProperty="cartId">
+        insert into cart(userId,cartMoney) values (#{user.userId},#{cartMoney})
+    </insert>
+
+    <update id="updateCartMoney" parameterType="Cart">
+        update cart set cartMoney=#{cartMoney} where cartId = #{cartId}
+    </update>
+
+    <resultMap id="cartDetailsMapper" type="CartDetails">
+        <id column="cartDetailsId" property="cartDetailsId"/>
+        <result column="amount" property="amount"/>
+        <association property="goods" javaType="Goods">
+            <id column="goodsId" property="goodsId"/>
+            <result column="goodsName" property="goodsName"/>
+            <result column="goodsPrice" property="goodsPrice"/>
+            <result column="goodsPicture" property="goodsPicture"/>
+        </association>
+        <association property="cart" javaType="Cart">
+            <id column="cartId" property="cartId"/>
+            <result column="cartMoney" property="cartMoney"/>
+        </association>
+    </resultMap>
+    <select id="getCartGoodsByUserId" resultMap="cartDetailsMapper">
+        select * FROM cart_details as cd
+        LEFT JOIN cart as c
+        on c.cartId=cd.cartId
+        LEFT JOIN  goods as g
+        on g.goodsId=cd.goodsId
+        where c.userId=#{userId}
+    </select>
+    
+    <insert id="insertCart">
+      insert into cart(userId,cartMoney) values (#{userId},#{cartMoney})
+    </insert>
+</mapper>

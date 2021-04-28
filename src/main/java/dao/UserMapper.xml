@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.UserMapper">
+
+    <select id="getUserById" resultType="User">
+        select * from user where userId=#{userId}
+    </select>
+
+    <select id="getAllUser" resultType="User">
+        select * from user where grade = 0 or grade = 1
+    </select>
+
+    <select id="checkUser" resultType="User">
+         select * from user where userPhone=#{userPhone} and password=#{password}
+    </select>
+
+    <insert id="addUser" parameterType="User">
+        insert into user(userPhone,password,address,money,grade,payName,payAccount) values(#{userPhone},#{password},#{address},#{money},#{grade},#{payName},#{payAccount})
+    </insert>
+
+    <delete id="deleteUser">
+        delete from user where userId=#{userId}
+    </delete>
+
+    <update id="updateUser" parameterType="User">
+        update user set password=#{password} where userId=#{userId}
+    </update>
+
+    <update id="updateAliPay" parameterType="User">
+        update user set payName=#{payName},payAccount=#{payAccount} where userId=#{userId}
+    </update>
+
+    <update id="updateUserPhone" parameterType="User">
+        update user set userPhone=#{userPhone} where userId=#{userId}
+    </update>
+
+    <update id="deleteAddress" parameterType="User">
+        update user set address=null where userId=#{userId}
+    </update>
+    
+    <update id="updateAddress" parameterType="User">
+        update user set address=#{address},userName=#{userName} where userId=#{userId}
+    </update>
+
+    <update id="updateUserMoney">
+        update user set money=#{money} where userId=#{userId}
+    </update>
+
+</mapper>

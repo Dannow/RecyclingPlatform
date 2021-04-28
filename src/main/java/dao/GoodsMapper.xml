@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.GoodsMapper">
+
+    <select id="getAllGoods" resultType="Goods">
+        select * from goods
+    </select>
+
+    <select id="getGoodsById" resultType="Goods">
+        select * from goods where goodsId=#{goodsId}
+    </select>
+
+    <insert id="addGoods" parameterType="Goods" useGeneratedKeys="true" keyProperty="goodsId" keyColumn="goodsId">
+        insert into goods(goodsName,goodsPrice,goodsPicture,secondSortId) values (#{goodsName},#{goodsPrice},#{goodsPicture},#{secondSort.secondSortId})
+    </insert>
+
+    <delete id="deleteGoods">
+        delete from goods where goodsId=#{goodsId}
+    </delete>
+
+    <update id="updateGoods" parameterType="Goods">
+        update goods set goodsPrice=#{goodsPrice} where goodsId=#{goodsId}
+    </update>
+
+    <select id="getGoodsBySecondSortId" resultType="Goods">
+        select * from goods where secondSortId=#{secondSortId}
+    </select>
+
+    <select id="searchGoods" resultType="Goods">
+        select * from goods where goodsName like '%${goodsName}%'
+    </select>
+
+    <resultMap id="goodsMap" type="Goods">
+        <id column="goodsId" property="goodsId"/>
+        <result column="goodsName" property="goodsName"/>
+        <result column="goodsPicture" property="goodsPicture"/>
+    </resultMap>
+    <select id="getGoodsByFirstSortId" resultMap="goodsMap">
+      select * from goods as g
+      left join second_sort as s
+      on g.secondSortId=s.secondSortId
+      left join first_sort as f
+      on s.firstSortId=f.firstSortId
+      where f.firstSortId=#{firstSortId}
+    </select>
+
+    <select id="getGoodsByCartId" resultType="Goods">
+       select * from goods as g
+       LEFT JOIN cart_details as c
+       on c.goodsId=g.goodsId
+       LEFT JOIN cart as ca on ca.cartId=c.cartId
+       where ca.cartId=#{cartId}
+    </select>
+
+    <resultMap id="goodsSortMap" type="Goods">
+        <id column="goodsId" property="goodsId"/>
+        <result column="goodsName" property="goodsName"/>
+        <result column="goodsPrice" property="goodsPrice"/>
+        <result column="goodsPicture" property="goodsPicture"/>
+        <association property="secondSort" javaType="SecondSort">
+            <id column="secondSortId" property="secondSortId"/>
+            <result column="secondSortName" property="secondSortName"/>
+        </association>
+    </resultMap>
+    <select id="getAllGoodsAndSecondSort" resultMap="goodsSortMap">
+       select * from goods as g
+       left join second_sort as s
+       on g.secondSortId=s.secondSortId
+    </select>
+</mapper>
