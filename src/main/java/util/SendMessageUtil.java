@@ -13,9 +13,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class SendMessageUtil {
     //阿里云accessKeyId
-    private static final String accessKeyId="LTAI4FcgUHX77gFRFMbupA1H";
+    private static final String accessKeyId="***";
     //阿里云accessSecret
-    private static final String accessSecret="MOeXYzWmXDIerhz02zDywDhKsJb64K";
+    private static final String accessSecret="***";
     //阿里云的签名名称
     private static final String signName="回收网";
     //阿里云模版CODE
